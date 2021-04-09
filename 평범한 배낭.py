@@ -1,5 +1,4 @@
 # 백준 12865번 https://www.acmicpc.net/problem/12865
-
 import sys
 
 N, K = map(int, input().split())
@@ -15,12 +14,12 @@ weight = 0
 value = 0
 for i in range(1,N+1):
     for j in range(1,K+1):
-        weight = prod[i][0]
-        value = prod[i][1]
+        weight = prod[i][0] #현재 물품의 무게
+        value = prod[i][1]  #현재 물품의 가치
 
         if weight > j:
-            knap[i][j] = knap[i-1][j]
+            knap[i][j] = knap[i-1][j]   #i번째 물품을 챙기지 않았을 때 최댓값
         else:
-            knap[i][j] = max(knap[i-1][j-weight]+value, knap[i-1][j])
+            knap[i][j] = max(knap[i-1][j-weight]+value, knap[i-1][j])   #i번째 물품을 챙겼을 때 최댓값
 
 print(knap[N][K])
