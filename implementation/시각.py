@@ -1,12 +1,14 @@
 n = int(input())
+i_cnt, s_cnt, m_cnt = 0,0,0
 
-cnt = 0
-for h in range(n+1):    #시
-    for m in range(60):     #분
-        for s in range(60):     #초
-            
-            #3 들어가면 더하기
-            if '3' in str(h)+str(m)+str(s):
-                cnt += 1
-
-print(cnt)
+for i in range(n+1):
+    for m in range(60):
+        for s in range(60):
+            if '3' in str(s):
+                s_cnt += 1
+        if '3' in str(m):
+            m_cnt += 1
+    if '3' in str(i):
+        i_cnt += 1
+        
+print(i_cnt + s_cnt + m_cnt)
