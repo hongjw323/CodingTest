@@ -1,22 +1,22 @@
-input_data = input()
+from matplotlib.pyplot import step
 
-row = int(input_data[1])    #행
-column = int(ord(input_data[0]))-ord('a')+1     #열(a~h를 1~8로 변환)
 
-#움직일 수 있는 경우의 수
-steps = [(2,1),(2,-1),(-2,1),(-2,-1),(1,2),(1,-2),(-1,2),(-1,-2)]
+place = input()
+row = ord(place[0]) - 96
+column = int(place[1])
+
+steps = [(-2,-1),(-2,1),(-1,-2),(1,-2),(-1,2),(1,2),(2,-1),(2,1)]
+# print(steps[1][0])
 
 cnt = 0
-for step in steps:
+for i in range(len(steps)):
     cnt += 1
+    next_row = row + steps[i][0]
+    next_col = column + steps[i][1]
     
-    #이동하고자 하는 위치
-    next_row = row + step[0]
-    next_col = column + step[1]
-
-    if next_row < 1 or next_col < 1 or next_row > 8 or next_col > 8:
+    if next_row>8 or next_col>8 or next_row<1 or next_col<1 :
         cnt -= 1
+    else :
         continue
-
-
+ 
 print(cnt)
